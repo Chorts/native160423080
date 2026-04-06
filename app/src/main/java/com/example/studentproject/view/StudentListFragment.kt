@@ -40,6 +40,7 @@ class StudentListFragment : Fragment() {
             binding.txtError.visibility = View.GONE
             binding.progressLoad.visibility = View.VISIBLE
             viewModel.refresh()
+            viewModel.refresh()
             binding.refreshLayout.isRefreshing = false
         }
     }
