@@ -29,6 +29,7 @@ class StudentListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(ListViewModel::class.java)
         viewModel.refresh()
+        viewModel.testSaveFile()
 
         binding.recViewStudent.layoutManager = LinearLayoutManager(context)
         binding.recViewStudent.adapter = studentListAdapter

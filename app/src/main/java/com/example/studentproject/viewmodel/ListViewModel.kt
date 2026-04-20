@@ -12,6 +12,7 @@ import com.android.volley.toolbox.Volley
 import com.example.studentproject.model.Student
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.example.studentproject.util.FileHelper
 
 class ListViewModel(application: Application): AndroidViewModel(application) {
     val studentsLD = MutableLiveData<ArrayList<Student>>()
@@ -61,6 +62,14 @@ class ListViewModel(application: Application): AndroidViewModel(application) {
     override fun onCleared() {
         super.onCleared()
         queue?.cancelAll(TAG)
+    }
+
+    fun testSaveFile() {
+        val fileHelper = FileHelper(getApplication())
+        fileHelper.writeToFile("Hello, world!")
+        val content = fileHelper.readFromFile()
+        Log.d("print_file", content)
+        Log.d("print_file", fileHelper.getFilePath())
     }
 }
 
