@@ -38,6 +38,15 @@ class ListViewModel(application: Application): AndroidViewModel(application) {
                 studentsLD.value = result as ArrayList<Student>?
                 loadingLD.value = false
                 Log.d("showvoley", result.toString())
+
+                val filehelper = FileHelper(getApplication())
+                val jsonString = Gson().toJson(result)
+                Log.d("print_file_write", jsonString)
+                filehelper.writeToFile(jsonString)
+
+                val resultfromfile =
+                    Gson().fromJson<List<Student>>(filehelper.readFromFile(), sType)
+                Log.d("print_file_read", resultfromfile.toString())
             },
             {
                 Log.d("showvoley", it.toString())
